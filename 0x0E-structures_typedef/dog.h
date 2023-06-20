@@ -1,20 +1,31 @@
-#include <stdio.h>
+#ifndef DOG_H
+#define DOG_H
 
-/* Define the struct dog */
-typedef struct dog {
+/**
+ * struct dog - a dog's basic info
+ * @name: First member
+ * @age: Second member
+ * @owner: Third member
+ *
+ * Description: Longer description
+ */
+struct dog
+{
 char *name;
 float age;
 char *owner;
-} dog;
+};
 
-int main(void) {
-/* Create a new dog */
-dog my_dog = {"Fido", 3.5, "John"};
+/**
+ * dog_t - typedef for struct dog
+ */
+typedef struct dog dog_t;
 
-/* Print the dog's information */
-printf("Name: %s\n", my_dog.name);
-printf("Age: %.1f\n", my_dog.age);
-printf("Owner: %s\n", my_dog.owner);
+void init_dog(struct dog *d, char *name, float age, char *owner);
+void print_dog(struct dog *d);
+dog_t *new_dog(char *name, float age, char *owner);
+void free_dog(dog_t *d);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *s);
 
-return 0;
-}
+#endif
